@@ -33,7 +33,7 @@ class Review(db.Model):
     movie_review = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    review_list=[]
+   
    
     def save_review(self):
         db.session.add(self)
@@ -57,7 +57,7 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     pass_secure = db.Column(db.String(255))
-    reviews = db.relationship('Review',backref = 'user',lazy = "dynamic")
+    
     @property
     def password(self):
             raise AttributeError('You cannot read the password attribute')
