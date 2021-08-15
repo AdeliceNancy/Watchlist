@@ -7,6 +7,7 @@ class Config:
     MOVIE_API_BASE_URL ='https://api.themoviedb.org/3/movie/{}?api_key={}'
     MOVIE_API_KEY = os.environ.get('MOVIE_API_KEY')
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://nancy:adelice@localhost/watchlist'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
@@ -26,7 +27,7 @@ class ProdConfig(Config):
     '''
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
     if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
-       SQLALCHEMY_DATABASE_URI= SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
+      SQLALCHEMY_DATABASE_URI= SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
 
 class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://nancy:adelice@localhost/watchlist_test'
