@@ -60,7 +60,7 @@ def new_review(id):
         review = form.review.data
 
         # Updated review instance
-        new_review = Review(movie_id=movie.id,movie_title=title,image_path=movie.poster,movie_review=review,user=current_user)
+        new_review = Review(movie_id=movie.id,movie_title=title,image_path=movie.poster,movie_review=review,user_id=current_user)
 
         # save review method
         new_review.save_review()

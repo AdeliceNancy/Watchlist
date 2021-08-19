@@ -34,7 +34,7 @@ class Review(db.Model):
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
    
-   
+    
     def save_review(self):
         db.session.add(self)
         db.session.commit()
@@ -57,6 +57,7 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     pass_secure = db.Column(db.String(255))
+    reviews= db.relationship('Review',backref = 'role',lazy="dynamic")
     
     @property
     def password(self):
